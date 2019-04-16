@@ -28,6 +28,7 @@ import { UserService } from './Services/Users/user.service';
 import { BirthdayService } from './Services/Birthday/birthday.service';
 import { MessagingService } from './Services/Messaging/messaging.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FestivitiesService } from './Services/Festivities/festivities.service';
 // import { StarRatingModule } from 'ionic3-star-rating';
 
 firebase.initializeApp({
@@ -78,6 +79,7 @@ firebase.initializeApp({
     UserService,
     BirthdayService,
     MessagingService,
+    FestivitiesService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

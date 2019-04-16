@@ -1,3 +1,25 @@
-<p>
-  add-fest works!
-</p>
+
+
+
+<ion-content>
+
+  <!-- Image Addition       -->
+  <ion-item class="selects" *ngIf="!img1">
+    <ion-label color="whiter">Select Image</ion-label>
+    <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg" id="file-input"
+      style="opacity: 0" #fileInp></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="img1">
+    <img [src]="img1" class="imgView" />
+    <div class="editBtns">
+      <ion-button class="btnTrash" color="danger" (click)="removeImage()">
+        Remove
+      </ion-button>
+    </div>
+  </ion-item>
+
+
+  <ion-button (click)="checkFest()"></ion-button>
+
+</ion-content>
