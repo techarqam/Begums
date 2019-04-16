@@ -11,6 +11,8 @@ import { ListUsersComponent } from './MainPages/list-users/list-users.component'
 import { AddUserComponent } from './Users/add-user/add-user.component';
 import { EditUserComponent } from './Users/edit-user/edit-user.component';
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
+import { FeedbackTemplateComponent } from './Templates/feedback-template/feedback-template.component';
+import { BirthdayTemplateComponent } from './Templates/birthday-template/birthday-template.component';
 
 const routes: Routes = [
   {
@@ -35,7 +37,7 @@ const routes: Routes = [
     path: 'add-fest',
     component: AddFestComponent
   },
-  
+
   {
     path: 'bulk-promotion',
     component: BulkPromotionComponent
@@ -47,7 +49,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'list-fests',
+    path: 'festivities',
     component: ListFestsComponent
   },
 
@@ -67,6 +69,17 @@ const routes: Routes = [
   {
     path: 'user-details',
     component: UserDetailsComponent
+
+  },
+  //Templates
+  {
+    path: 'birthday-template',
+    component: BirthdayTemplateComponent,
+
+  },
+  {
+    path: 'feedback-template',
+    component: FeedbackTemplateComponent
 
   }
 ]

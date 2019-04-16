@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FestivitiesService } from 'src/app/Services/Festivities/festivities.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-fest',
@@ -11,9 +12,11 @@ export class AddFestComponent implements OnInit {
   img1: any;
   img2: any;
   url: any;
+  showLoader: boolean = false;
 
   constructor(
     private festService: FestivitiesService,
+    private navCtrl: NavController,
   ) { }
 
   ngOnInit() { }
@@ -26,12 +29,28 @@ export class AddFestComponent implements OnInit {
 
 
   addFest() {
-    let temp = this.festService.festModal.value;
-    this.festService.addFest(temp);
-    console.log(temp);
+    this.showLoader = true;
+    if (this.festService.festModal.valid) {
+      let temp = this.festService.festModal.value;
+      temp.Image = this.img2;
+      this.festService.addFest(temp).then(() => {
+
+        this.festService.festModal.reset();
+        this.showLoader = false;
+        this.navCtrl.navigateRoot('/festivities');
+      })
+    } else {
+      this.festService.presentToast("Please complete the Required Details")
+    }
   }
 
-  //Image Uploading Section
+
+
+
+
+
+
+
   fileChange(event) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
@@ -47,8 +66,8 @@ export class AddFestComponent implements OnInit {
   }
 
 
+
   removeImage() {
     this.img1 = null;
   }
-  //Image Uploading Section Ended
 }

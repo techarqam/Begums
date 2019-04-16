@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Add Festivales</ion-title>
+    <ion-title>Add a festivity</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,37 +16,34 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col class="mainCol" offset-md="3" size-md="6" size="12">
+      <ion-col class="mainCol " offset-md="3" size-md="6" size="12">
         <ion-card class="flpAnim">
           <ion-row>
-            <ion-col size="12" size-md="12">
+            <ion-col size="12" class="noBacki" size-md="12">
               <ion-card-content>
 
-                <!-- <ion-navbar color="primary">
-                      <ion-title>New Client</ion-title>
-                    </ion-navbar> -->
-                <form [formGroup]="this.festService.festModal">
+                <app-loader *ngIf="showLoader"></app-loader>
+
+                <form [formGroup]="this.festService.festModal" *ngIf="!showLoader">
 
 
-                  <ion-item margin-vertical shape="round">
+                  <ion-item shape="round">
                     <ion-label position="floating">Festival Name</ion-label>
-                    <ion-input type="text" autofocus (keyup.enter)="checkData()" formControlName="festivalName">
-                    </ion-input>
+                    <ion-input type="text" formControlName="Name"></ion-input>
                   </ion-item>
 
-                  <ion-item margin-vertical shape="round">
+                  <ion-item shape="round">
                     <ion-label position="floating">Festival Date</ion-label>
                     <ion-datetime display-format="MMM DD, YYYY" formControlName="Date">
                     </ion-datetime>
                   </ion-item>
 
-                  <ion-item margin-vertical shape="round">
-                    <ion-label position="floating">Status</ion-label>
-                    <ion-input type="text" autofocus (keyup.enter)="checkData()" formControlName="Status"></ion-input>
+                  <ion-item shape="round">
+                    <ion-label position="floating">Message</ion-label>
+                    <ion-textarea formControlName="Message"></ion-textarea>
                   </ion-item>
 
 
-                  <!-- Image Addition  -->
                   <ion-item class="selects" *ngIf="!img1">
                     <!-- <ion-label color="whiter">Select Image</ion-label> -->
                     <ion-button class="ion-margin">Select Image</ion-button>
@@ -62,8 +59,10 @@
                       </ion-button>
                     </div>
                   </ion-item>
-                  <!-- Image Addition Ended -->
-                  <ion-button shape="round" (click)="checkFest()">Add festivals</ion-button>
+
+
+                  <br />
+                  <ion-button shape="round" class="ion-float-right" (click)="checkFest()">Add festivals</ion-button>
                 </form>
 
               </ion-card-content>
@@ -87,13 +86,13 @@
 
                 <form [formGroup]="this.FestivitiesService. festService">
 
-                  <ion-item margin-vertical shape="round">
+                  <ion-item  shape="round">
                     <ion-label position="floating">Festival Name</ion-label>
                     <ion-input type="text" autofocus formControlName="FestivalsName"></ion-input>
                   </ion-item>
 
 
-                  <ion-item margin-vertical shape="round">
+                  <ion-item  shape="round">
                     <ion-label position="floating">Date of Festival</ion-label>
                     <ion-datetime display-format="MMM DD, YYYY" formControlName="Date">
                     </ion-datetime>
@@ -101,17 +100,17 @@
 
 
 
-                  <ion-item margin-vertical shape="round">
+                  <ion-item  shape="round">
                     <ion-label position="floating">Status</ion-label>
                     <ion-input type="text" formControlName="Status"></ion-input>
                   </ion-item>
-                  <ion-item margin-vertical shape="round">
+                  <ion-item  shape="round">
                     <ion-label position="floating">TimeStamp</ion-label>
                     <ion-datetime display-format="MMM DD, YYYY" formControlName="TimeStamp">
                     </ion-datetime>
                   </ion-item>
 
-                  <ion-item margin-vertical shape="round">
+                  <ion-item  shape="round">
                     <ion-label position="floating">ImageUrl</ion-label>
                     <ion-input type="text" formControlName="Status"></ion-input>
                   </ion-item>

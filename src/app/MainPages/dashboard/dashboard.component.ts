@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   gtbulkPromotions() { }
   gtPromotionsS() { }
   gtfest() {
-    this.navCtrl.navigateForward("/list-fests")
+    this.navCtrl.navigateForward("/festivities")
 
   }
 

@@ -31,6 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FestivitiesService } from './Services/Festivities/festivities.service';
 import { LoaderComponent } from './Components/UI/loader/loader.component';
 import { FeedbackService } from './Services/Feedback/feedback.service';
+import { BirthdayTemplateComponent } from './Templates/birthday-template/birthday-template.component';
+import { FeedbackTemplateComponent } from './Templates/feedback-template/feedback-template.component';
+import { TemplateService } from './Services/Templates/template.service';
 // import { StarRatingModule } from 'ionic3-star-rating';
 
 firebase.initializeApp({
@@ -58,8 +61,9 @@ firebase.initializeApp({
     AddFestComponent,
     ListFestsComponent,
     LoginComponent,
-    FeedbackComponent,
     LoaderComponent,
+    BirthdayTemplateComponent,
+    FeedbackTemplateComponent,
   ],
   entryComponents: [
     LoaderComponent,
@@ -85,6 +89,7 @@ firebase.initializeApp({
     MessagingService,
     FestivitiesService,
     FeedbackService,
+    TemplateService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
