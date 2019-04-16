@@ -21,13 +21,14 @@ export class AddFestComponent implements OnInit {
 
 
   checkFest() {
-
+    this.addFest();
   }
 
 
   addFest() {
-    
-    this.festService.addFest(this.img2);
+    let temp = this.festService.festModal.value;
+    this.festService.addFest(temp);
+    console.log(temp);
   }
 
   //Image Uploading Section

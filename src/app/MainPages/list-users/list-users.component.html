@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="backi">
 
   <ion-grid>
     <ion-row>
@@ -48,9 +48,9 @@
 
 
   <!-- <ion-grid class="strip" *ngIf="Users.length"> -->
-  <ion-grid class="strip">
+  <ion-grid class="strip ">
     <ion-row>
-      <ion-col size-md="12" size="12">
+      <ion-col size-md="10" offset-md="1" size="12">
         <ion-card>
 
           <ion-row class="tableTop wt">
@@ -74,7 +74,9 @@
             </ion-col>
           </ion-row>
 
-          <div class="strip ">
+          <app-loader *ngIf="showLoader" ></app-loader>
+
+          <div class="strip noBacki ">
             <ion-row *ngFor="let u of users | async" class="ion-padding-horizontal">
               <ion-col grr padding-top size="12" size-md="3">
                 <h2 ion-text color="grr">{{u.Name}}</h2>

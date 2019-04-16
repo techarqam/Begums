@@ -1,25 +1,155 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add Festivales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
 
 
 
 <ion-content>
 
-  <!-- Image Addition       -->
-  <ion-item class="selects" *ngIf="!img1">
-    <ion-label color="whiter">Select Image</ion-label>
-    <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg" id="file-input"
-      style="opacity: 0" #fileInp></ion-input>
-  </ion-item>
-
-  <ion-item *ngIf="img1">
-    <img [src]="img1" class="imgView" />
-    <div class="editBtns">
-      <ion-button class="btnTrash" color="danger" (click)="removeImage()">
-        Remove
-      </ion-button>
-    </div>
-  </ion-item>
 
 
-  <ion-button (click)="checkFest()"></ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="mainCol" offset-md="3" size-md="6" size="12">
+        <ion-card class="flpAnim">
+          <ion-row>
+            <ion-col size="12" size-md="12">
+              <ion-card-content>
+
+                <!-- <ion-navbar color="primary">
+                      <ion-title>New Client</ion-title>
+                    </ion-navbar> -->
+                <form [formGroup]="this.festService.festModal">
+
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">Festival Name</ion-label>
+                    <ion-input type="text" autofocus (keyup.enter)="checkData()" formControlName="festivalName">
+                    </ion-input>
+                  </ion-item>
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">Festival Date</ion-label>
+                    <ion-datetime display-format="MMM DD, YYYY" formControlName="Date">
+                    </ion-datetime>
+                  </ion-item>
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">Status</ion-label>
+                    <ion-input type="text" autofocus (keyup.enter)="checkData()" formControlName="Status"></ion-input>
+                  </ion-item>
+
+
+                  <!-- Image Addition  -->
+                  <ion-item class="selects" *ngIf="!img1">
+                    <!-- <ion-label color="whiter">Select Image</ion-label> -->
+                    <ion-button class="ion-margin">Select Image</ion-button>
+                    <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg"
+                      id="file-input" style="opacity: 0" #fileInp></ion-input>
+                  </ion-item>
+
+                  <ion-item *ngIf="img1">
+                    <img [src]="img1" class="imgView" />
+                    <div class="editBtns">
+                      <ion-button class="btnTrash" color="danger" (click)="removeImage()">
+                        Remove
+                      </ion-button>
+                    </div>
+                  </ion-item>
+                  <!-- Image Addition Ended -->
+                  <ion-button shape="round" (click)="checkFest()">Add festivals</ion-button>
+                </form>
+
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md='6' offset-md=3>
+        <ion-card>
+          <ion-row>
+            <ion-col>
+              <ion-card-content>
+
+                <form [formGroup]="this.FestivitiesService. festService">
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">Festival Name</ion-label>
+                    <ion-input type="text" autofocus formControlName="FestivalsName"></ion-input>
+                  </ion-item>
+
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">Date of Festival</ion-label>
+                    <ion-datetime display-format="MMM DD, YYYY" formControlName="Date">
+                    </ion-datetime>
+                  </ion-item>
+
+
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">Status</ion-label>
+                    <ion-input type="text" formControlName="Status"></ion-input>
+                  </ion-item>
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">TimeStamp</ion-label>
+                    <ion-datetime display-format="MMM DD, YYYY" formControlName="TimeStamp">
+                    </ion-datetime>
+                  </ion-item>
+
+                  <ion-item margin-vertical shape="round">
+                    <ion-label position="floating">ImageUrl</ion-label>
+                    <ion-input type="text" formControlName="Status"></ion-input>
+                  </ion-item>
+
+
+
+                  <ion-item class="selects" *ngIf="!img1">
+                    <ion-label color="whiter">Select Image</ion-label>
+                    <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg"
+                      id="file-input" style="opacity: 0" #fileInp></ion-input>
+                  </ion-item>
+
+                  <ion-item *ngIf="img1">
+                    <img [src]="img1" class="imgView" />
+                    <div class="editBtns">
+                      <ion-button class="btnTrash" color="danger" (click)="removeImage()">
+                        Remove
+                      </ion-button>
+                    </div>
+                  </ion-item>
+
+
+
+                  <ion-button shape="round" (click)="checkFest()">Add festivals</ion-button>
+
+                </form>
+              </ion-card-content>
+
+            </ion-col>
+
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid> -->
+
+
+
 
 </ion-content>

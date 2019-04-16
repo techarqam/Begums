@@ -17,9 +17,15 @@ export class DashboardComponent implements OnInit {
   ngOnInit() { }
 
 
-  gtClients() { }
+  gtClients() {
+    this.navCtrl.navigateForward("/clients")
+  }
   gtbulkPromotions() { }
   gtPromotionsS() { }
+  gtfest() {
+    this.navCtrl.navigateForward("/list-fests")
+
+  }
 
 
   signOut() {

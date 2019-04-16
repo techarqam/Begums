@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Client Feedback</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()" clear icon-only>
+        <ion-icon name="md-close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+
+
+    <form [formGroup]="this.feedbackService.feedbackModel">
+
+      <ion-slides>
+        <ion-slide>
+          <!-- <ionic3-star-rating activeIcon="ios-star" defaultIcon="ios-star" activeColor="#949363" defaultColor="white"
+              readonly="false" [rating]="0">
+            </ionic3-star-rating> -->
+
+          <ion-item class="content">
+            <ion-label position="floating">Comment</ion-label>
+            <ion-input type="text" fromControlName="comment"></ion-input>
+          </ion-item>
+
+          <ion-button (click)="submitRating()" shap="round">Submit</ion-button>
+        </ion-slide>
+      </ion-slides>
+
+    </form>
+  </ion-card>
+</ion-content>

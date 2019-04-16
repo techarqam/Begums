@@ -1,3 +1,19 @@
-<p>
-  list-fests works!
-</p>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Festivities</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button shape="round" float-right (click)="addFest()">
+          <ion-icon name="add"></ion-icon>
+          Add Festival
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

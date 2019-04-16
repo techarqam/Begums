@@ -15,7 +15,7 @@ import { UserDetailsComponent } from './Users/user-details/user-details.componen
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
@@ -31,11 +31,11 @@ const routes: Routes = [
     path: 'feedback',
     component: FeedbackComponent
   },
-
   {
-    path: 'add-fests',
+    path: 'add-fest',
     component: AddFestComponent
   },
+  
   {
     path: 'bulk-promotion',
     component: BulkPromotionComponent
@@ -56,7 +56,7 @@ const routes: Routes = [
     component: ListUsersComponent
   },
   {
-    path: 'add-user',
+    path: 'add-client',
     component: AddUserComponent
   },
 

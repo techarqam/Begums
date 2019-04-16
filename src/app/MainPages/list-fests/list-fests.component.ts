@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-list-fests',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListFestsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+  addFest() {
+    this.navCtrl.navigateForward('/add-fest');
+  }
 
 }
