@@ -34,6 +34,7 @@ import { FeedbackService } from './Services/Feedback/feedback.service';
 import { BirthdayTemplateComponent } from './Templates/birthday-template/birthday-template.component';
 import { FeedbackTemplateComponent } from './Templates/feedback-template/feedback-template.component';
 import { TemplateService } from './Services/Templates/template.service';
+import { PromotionsService } from './Services/Promotions/promotions.service';
 // import { StarRatingModule } from 'ionic3-star-rating';
 
 firebase.initializeApp({
@@ -90,6 +91,7 @@ firebase.initializeApp({
     FestivitiesService,
     FeedbackService,
     TemplateService,
+    PromotionsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

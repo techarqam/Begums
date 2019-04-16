@@ -17,6 +17,7 @@
     </ion-row>
   </ion-grid>
 
+  <app-loader *ngIf="showLoader"></app-loader>
 
 
 
@@ -29,7 +30,9 @@
             <ion-card-title>{{f.Name | uppercase}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <img [src]="f.ImgUrl" />
+            <a [href]="f.ImgUrl" target="_blank">
+              <img [src]="f.ImgUrl" />
+            </a>
             <ion-list lines="none">
               <ion-item>
                 <p class="heads" slot="start">Message</p>

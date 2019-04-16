@@ -39,7 +39,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'bulk-promotion',
+    path: 'bulk-promotions',
     component: BulkPromotionComponent
   },
 

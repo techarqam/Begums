@@ -20,8 +20,12 @@ export class DashboardComponent implements OnInit {
   gtClients() {
     this.navCtrl.navigateForward("/clients")
   }
-  gtbulkPromotions() { }
-  gtPromotionsS() { }
+  gtbulkPromotions() {
+    this.navCtrl.navigateForward("/bulk-promotions");
+  }
+  gtPromotionsS() {
+    this.navCtrl.navigateForward("/select-promotion");
+  }
   gtfest() {
     this.navCtrl.navigateForward("/festivities")
 

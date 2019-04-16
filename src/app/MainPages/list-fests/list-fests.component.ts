@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class ListFestsComponent implements OnInit {
 
   fests: Observable<any>;
+  showLoader: boolean = true;
 
   constructor(
     private navCtrl: NavController,
@@ -21,6 +22,7 @@ export class ListFestsComponent implements OnInit {
   ngOnInit() {
     this.fests = this.festService.getFests();
 
+    this.fests.subscribe(() => { this.showLoader = false });
 
     // this.fests = this.festService.getFests().pipe(
     //   map(actions => actions.map(a => {
