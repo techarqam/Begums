@@ -35,40 +35,40 @@ export class EditUserComponent implements OnInit {
     })
   }
 
-  checkData() {
-    if (this.userService.user.valid) {
-      this.updateUser();
-    } else {
-      this.userService.presentToast("Details not valid")
-    }
-  }
   updateUser() {
     let temp = this.userService.user.value;
-    this.userService.updateUser(temp);
+    if (temp.Name) {
+      temp.key = this.userId;
+      this.userService.updateUser(temp);
+    } else {
+      this.userService.presentToast("Enter a Name for the User");
+    }
   }
-  delConfirmUser() { }
-  //   let confirm = this.alertCtrl.create({
-  //     title: 'Are you sure you want to Delete Client ?',
-  //     message: 'This data cannot be recovered again.',
-  //     buttons: [
-  //       {
-  //         text: 'No, Its a mistake',
-  //         handler: () => {
+  async delConfirmUser() {
 
-  //         }
-  //       },
-  //       {
-  //         text: "Yes, I'm sure",
-  //         handler: () => {
-  //           this.delUser();
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   confirm.present();
-  //  }
+    const alert = await this.alertCtrl.create({
+      header: 'Are you sure you want to Delete Client ?',
+      message: 'This data cannot be recovered again.',
+      buttons: [
+        {
+          text: 'No, Its a mistake',
+          role: 'cancel',
+          handler: () => {
+          }
+        }, {
+          text: "Yes, I'm sure",
+          handler: () => {
+            this.delUser();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }
   delUser() {
-
+    this.userService.delUser(this.userId);
   }
 
 }

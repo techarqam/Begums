@@ -54,14 +54,21 @@ export class UserService {
   getUser(key) {
     return this.firestore.doc(`Users/${key}`).valueChanges();
   }
-  async updateUser(key) {
-    return this.firestore.doc(`Users/${key}`).valueChanges();
+  async updateUser(user) {
 
-    // this.navCtrl.navigateForward(`/user-details/${this.userId}`)
+
+    return this.firestore.collection("Users")
+      .doc(user.key).set({ Name: user.Name }, { merge: true })
+
+      .then(() => {
+        this.navCtrl.navigateForward(`/user-details/${user.key}`)
+      });
 
   }
-  delUser() {
-
+  delUser(key) {
+    this.firestore.doc(`Users/${key}`).delete().then(() => {
+      this.navCtrl.navigateRoot('/clients');
+    })
   }
 
 

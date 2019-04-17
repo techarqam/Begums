@@ -27,18 +27,13 @@ export class UserDetailsComponent implements OnInit {
   }
 
   userDetails() {
-    this.userService.getUser(this.userId).subscribe(snap=>{
-      this.user= snap;
+    this.userService.getUser(this.userId).subscribe(snap => {
+      this.user = snap;
     });
   }
-  delConfirmUser(){
-  
-  }
-  delUser(){
 
-  }
   editClient() {
     this.navCtrl.navigateForward(`/edit-user/${this.userId}`)
-    } 
+  }
 
 }

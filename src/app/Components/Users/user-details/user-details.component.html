@@ -23,39 +23,37 @@
                 <!-- {{user |json}} -->
                 <ion-item class="ion-margin-vertical">
                   <p color="primary" slot="start">Client Name</p>
-                  <p slot="end">{{user.Name | json }}</p>
+                  <p slot="end">{{user.Name  }}</p>
                 </ion-item>
 
                 <ion-item class="ion-margin-vertical">
                   <p color="primary" slot="start">Client Phone</p>
-                  <p slot="end">{{user.Phone | json }}</p>
+                  <p slot="end">{{user.Phone  }}</p>
                 </ion-item>
 
 
                 <ion-item margin-vertical round>
                     <p color="primary" slot="start">Birthday</p>
-                    <p slot="end">{{user.DOB | json}}</p>
+                    <p slot="end">{{user.DOB }}</p>
                 </ion-item>
 
                 <ion-item margin-vertical round>
                     <p color="primary" slot="start">Last Rating</p>
-                   <p slot="end">{{user.LastRating | json}}</p>
+                   <p slot="end">{{user.LastRating }}</p>
                 </ion-item>
 
 
                 <ion-item margin-vertical round>
                 <p color="primary" slot="start">Last Comment</p>
-                   <p slot="end">{{user.LastComment | json}}</p>
+                   <p slot="end">{{user.LastComment }}</p>
                 </ion-item>
 
                 <ion-item margin-vertical round>
                 <p color="primary" slot="start">Average Rating</p>
-                   <p slot="end">{{user.AverageRatings | json}}</p>
+                   <p slot="end">{{user.AverageRatings }}</p>
                 </ion-item>
 
-                <ion-button class="ion-float-left" color="danger" fill="clear" (click)="delConfirmUser(u)">
-                  Delete
-                </ion-button>
+
                 <ion-button class="ion-float-right" shap="round" (click)="editClient()">Edit Client</ion-button>
 
               </ion-card-content>
