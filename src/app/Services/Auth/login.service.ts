@@ -32,20 +32,20 @@ export class LoginService {
 
 
   login(user) {
-    // this.fireAuth.auth.signInWithEmailAndPassword(user.Email, user.Pass)
-    // .catch((e) => {
-    //   this.presentToast(e.message);
-    // }).then(() => {
+    return this.fireAuth.auth.signInWithEmailAndPassword(user.Email, user.Pass)
+      .catch((e) => {
+        this.presentToast(e.message);
+      }).then(() => {
 
-    //   this.fireAuth.authState.pipe(first()).pipe(
-    //     tap(user => {
-    //       if (user) {
-    //         window.location.href = "/dashboard";
-    //       }
-    //     })
-    //   ).subscribe();
-    // })
-    console.log(user);
+        this.fireAuth.authState.pipe(first()).pipe(
+          tap(user => {
+            if (user) {
+              console.log(user.email);
+              window.location.href = "/dashboard";
+            }
+          })
+        ).subscribe();
+      })
 
   }
 

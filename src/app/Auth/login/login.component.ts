@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     let user = this.loginService.signIn.value;
-    this.loginService.login(user);
-    this.loginService.signIn = null;
+    this.loginService.login(user).then(()=> {
+      this.loginService.signIn.reset();
+    });
   }
 
 }
