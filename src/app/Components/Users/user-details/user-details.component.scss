@@ -1,0 +1,36 @@
+ion-card-title{
+  text-align: center;
+  color: #ffffff
+}
+    ion-card {
+          margin: auto;
+          position : relative;
+          top: 5%;
+          text-align: center;
+          // -webkit-transform: translate(-50%, 0);
+          // transform: translate(-50%, 0);
+           border-radius: 10px;
+          // -webkit-animation: flipinx 1s ease-out 0s 1 normal both;
+          // animation: flipinx 1s ease-out 0s 1 normal both;
+         }
+      //    ion-label{
+      //      font-weight: bold !important ;
+      //    }
+  
+         ion-item{
+         color: #949363;
+     
+          padding-left: 15px;
+          padding-right: 0;
+            
+          // background-color: #fff;
+          // -webkit-box-shadow: none;
+          // box-shadow: none;
+          // -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+          // transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+         
+          ion-input{
+             font-size: 24px;
+            font-weight: 200;
+          }

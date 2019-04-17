@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { AngularFirestore } from "@angular/fire/firestore";
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 import * as  moment from 'moment';
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,11 @@ export class UserService {
   user = new FormGroup({
     Name: new FormControl("", Validators.required),
     DOB: new FormControl(""),
-    Phone: new FormControl("", [Validators.required]),
+    Phone: new FormControl("", [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+    ]),
     TimeStamp: new FormControl(moment().format()),
   });
 
@@ -20,6 +24,8 @@ export class UserService {
   constructor(
     private firestore: AngularFirestore,
     public toastCtrl: ToastController,
+    private navCtrl: NavController,
+
   ) { }
 
 
@@ -43,8 +49,21 @@ export class UserService {
   }
 
   getUsers() {
-    return this.firestore.collection('Users').valueChanges();
+    return this.firestore.collection('Users').snapshotChanges();
   }
+  getUser(key) {
+    return this.firestore.doc(`Users/${key}`).valueChanges();
+  }
+  async updateUser(key) {
+    return this.firestore.doc(`Users/${key}`).valueChanges();
+
+    // this.navCtrl.navigateForward(`/user-details/${this.userId}`)
+
+  }
+  delUser() {
+
+  }
+
 
   //Support
   async presentToast(msg) {

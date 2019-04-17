@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/Users/user.service';
 import { Observable } from 'rxjs';
 import { NavController, ModalController } from '@ionic/angular';
-import { FeedbackComponent } from 'src/app/Feedback/feedback/feedback.component';
-
+import { FeedbackComponent } from '../../Feedback/feedback/feedback.component';
 
 
 @Component({
@@ -44,5 +43,9 @@ export class ListUsersComponent implements OnInit {
     });
     return await modal.present();
 
+  }
+  userDetails(userKey){
+    // console.log(userKey);
+    this.navCtrl.navigateForward(`/user-details/${userKey}`)
   }
 }

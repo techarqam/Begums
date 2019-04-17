@@ -74,21 +74,21 @@
             </ion-col>
           </ion-row>
 
-          <app-loader *ngIf="showLoader" ></app-loader>
+          <app-loader *ngIf="showLoader"></app-loader>
 
           <div class="strip noBacki ">
             <ion-row *ngFor="let u of users | async" class="ion-padding-horizontal">
               <ion-col grr padding-top size="12" size-md="3">
-                <h2 ion-text color="grr">{{u.Name}}</h2>
+                <h2 ion-text color="grr">{{u.payload.doc.data().Name}}</h2>
               </ion-col>
               <ion-col grr padding-top size="12" size-md="2">
-                <h2 ion-text text-md-center color="grr">{{u.Phone}}</h2>
+                <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().Phone}}</h2>
               </ion-col>
               <ion-col grr padding-top size="12" size-md="2">
-                <h2 ion-text text-md-center color="grr">{{u.DOB | date : 'd MMM, y'}}</h2>
+                <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().DOB | date : 'd MMM, y'}}</h2>
               </ion-col>
               <ion-col grr padding-top size="12" size-md="2">
-                <h2 ion-text text-md-center color="grr">{{u.AverageRatings }}</h2>
+                <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().AverageRatings }}</h2>
               </ion-col>
               <ion-col size="12" size-md="2" text-md-center>
                 <!-- <on-button (click)="editUser(u)">
@@ -98,7 +98,7 @@
                     Take Feedback
               </ion-button> -->
 
-                <ion-button color="primary" fill="clear" (click)="userDetails(u)">
+                <ion-button color="primary" fill="clear" (click)="userDetails(u.payload.doc.id)">
                   <ion-icon name="md-eye"></ion-icon>
                 </ion-button>
               </ion-col>

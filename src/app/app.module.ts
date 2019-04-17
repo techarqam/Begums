@@ -11,17 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from './MainPages/dashboard/dashboard.component';
-import { LoginComponent } from './Auth/login/login.component';
-import { FeedbackComponent } from './Feedback/feedback/feedback.component';
-import { BulkPromotionComponent } from './Promotion/bulk-promotion/bulk-promotion.component';
-import { SelectPromotionComponent } from './Promotion/select-promotion/select-promotion.component';
-import { AddUserComponent } from './Users/add-user/add-user.component';
-import { ListUsersComponent } from './MainPages/list-users/list-users.component';
-import { EditUserComponent } from './Users/edit-user/edit-user.component';
-import { UserDetailsComponent } from './Users/user-details/user-details.component';
-import { AddFestComponent } from './Fests/add-fest/add-fest.component';
-import { ListFestsComponent } from './MainPages/list-fests/list-fests.component';
+
 import * as firebase from 'firebase';
 import { LoginService } from './Services/Auth/login.service';
 import { UserService } from './Services/Users/user.service';
@@ -31,10 +21,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { FestivitiesService } from './Services/Festivities/festivities.service';
 import { LoaderComponent } from './Components/UI/loader/loader.component';
 import { FeedbackService } from './Services/Feedback/feedback.service';
-import { BirthdayTemplateComponent } from './Templates/birthday-template/birthday-template.component';
-import { FeedbackTemplateComponent } from './Templates/feedback-template/feedback-template.component';
+
 import { TemplateService } from './Services/Templates/template.service';
 import { PromotionsService } from './Services/Promotions/promotions.service';
+import { DashboardComponent } from './Components/MainPages/dashboard/dashboard.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { FeedbackComponent } from './Components/Feedback/feedback/feedback.component';
+import { BulkPromotionComponent } from './Components/Promotion/bulk-promotion/bulk-promotion.component';
+import { SelectPromotionComponent } from './Components/Promotion/select-promotion/select-promotion.component';
+import { AddUserComponent } from './Components/Users/add-user/add-user.component';
+import { ListUsersComponent } from './Components/MainPages/list-users/list-users.component';
+import { EditUserComponent } from './Components/Users/edit-user/edit-user.component';
+import { UserDetailsComponent } from './Components/Users/user-details/user-details.component';
+import { AddFestComponent } from './Components/Fests/add-fest/add-fest.component';
+import { ListFestsComponent } from './Components/MainPages/list-fests/list-fests.component';
+import { BirthdayTemplateComponent } from './Components/Templates/birthday-template/birthday-template.component';
+import { FeedbackTemplateComponent } from './Components/Templates/feedback-template/feedback-template.component';
 // import { StarRatingModule } from 'ionic3-star-rating';
 
 firebase.initializeApp({
