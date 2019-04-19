@@ -25,7 +25,6 @@ import { FeedbackService } from './Services/Feedback/feedback.service';
 import { TemplateService } from './Services/Templates/template.service';
 import { PromotionsService } from './Services/Promotions/promotions.service';
 import { DashboardComponent } from './Components/MainPages/dashboard/dashboard.component';
-import { LoginComponent } from './Auth/login/login.component';
 import { FeedbackComponent } from './Components/Feedback/feedback/feedback.component';
 import { BulkPromotionComponent } from './Components/Promotion/bulk-promotion/bulk-promotion.component';
 import { SelectPromotionComponent } from './Components/Promotion/select-promotion/select-promotion.component';
@@ -37,6 +36,8 @@ import { AddFestComponent } from './Components/Fests/add-fest/add-fest.component
 import { ListFestsComponent } from './Components/MainPages/list-fests/list-fests.component';
 import { BirthdayTemplateComponent } from './Components/Templates/birthday-template/birthday-template.component';
 import { FeedbackTemplateComponent } from './Components/Templates/feedback-template/feedback-template.component';
+import { LoginGGuard } from './Guards/login-g.guard';
+import { LoginComponent } from './Components/Auth/login/login.component';
 // import { StarRatingModule } from 'ionic3-star-rating';
 
 firebase.initializeApp({
@@ -53,7 +54,6 @@ firebase.initializeApp({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent,
     FeedbackComponent,
     BulkPromotionComponent,
     SelectPromotionComponent,
@@ -94,6 +94,7 @@ firebase.initializeApp({
     FeedbackService,
     TemplateService,
     PromotionsService,
+    LoginGGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

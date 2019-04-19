@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/Services/Auth/login.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     let user = this.loginService.signIn.value;
-    this.loginService.login(user).then(()=> {
+    this.loginService.login(user).then(() => {
       this.loginService.signIn.reset();
     });
   }
