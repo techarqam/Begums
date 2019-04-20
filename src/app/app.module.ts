@@ -39,6 +39,8 @@ import { FeedbackTemplateComponent } from './Components/Templates/feedback-templ
 import { LoginGGuard } from './Guards/login-g.guard';
 import { LoginComponent } from './Components/Auth/login/login.component';
 // import { StarRatingModule } from 'ionic3-star-rating';
+import { FormsModule } from '@angular/forms';
+import { RemoteFeedbackComponent } from './Components/Feedback/remote-feedback/remote-feedback.component';
 
 firebase.initializeApp({
   apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
@@ -67,9 +69,11 @@ firebase.initializeApp({
     LoaderComponent,
     BirthdayTemplateComponent,
     FeedbackTemplateComponent,
+    RemoteFeedbackComponent,
   ],
   entryComponents: [
     LoaderComponent,
+    RemoteFeedbackComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +85,8 @@ firebase.initializeApp({
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    FormsModule,
+
 
   ],
   providers: [

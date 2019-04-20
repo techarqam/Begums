@@ -12,7 +12,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-md="4">
-        <ion-searchbar animated="true" placeholder="Search by name" (ionInput)="getItems(searchBar)">
+        <ion-searchbar animated="true" placeholder="Search by name" [(ngModel)]="searchValue" (ionChange)="search()">
         </ion-searchbar>
       </ion-col>
       <ion-col size="12" size-md="6" offset-md="2">
@@ -25,7 +25,7 @@
   </ion-grid>
 
 
-
+  <!-- {{results | json}} -->
 
 
   <!-- <ion-grid class="strip" *ngIf="!Users.length"> -->
@@ -79,7 +79,7 @@
           <div class="strip noBacki ">
             <ion-row *ngFor="let u of users | async" class="ion-padding-horizontal">
               <ion-col grr padding-top size="12" size-md="3">
-                <h2 ion-text color="grr">{{u.payload.doc.data().Name}}</h2>
+                <h2 ion-text color="grr">{{u.payload.doc.data().Name | uppercase}}</h2>
               </ion-col>
               <ion-col grr padding-top size="12" size-md="2">
                 <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().Phone}}</h2>
@@ -121,6 +121,6 @@
   <!-- <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner="bubbles" loadingText="Loading Users...">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll> -->
-
+  <ion-button (click)="loadMore()">Load More</ion-button>
 
 </ion-content>

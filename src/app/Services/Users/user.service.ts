@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { AngularFirestore } from "@angular/fire/firestore";
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, ModalController } from '@ionic/angular';
 import * as  moment from 'moment';
+import { FeedbackComponent } from 'src/app/Components/Feedback/feedback/feedback.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,40 +26,60 @@ export class UserService {
     private firestore: AngularFirestore,
     public toastCtrl: ToastController,
     private navCtrl: NavController,
-
+    private modalCtrl: ModalController,
   ) { }
 
 
+  userSearch(searchValue) {
+    return this.firestore.collection(`Users`, ref => ref.orderBy("Name")
+      .startAt(searchValue.toLowerCase()).endAt(searchValue.toLowerCase() + "\uf8ff")
+      .limit(10))
+      .snapshotChanges();
 
+  }
 
 
 
   checkUser(user) {
     let tStrng: string = String(user.Phone);
-    this.firestore.collection("Users").doc(tStrng).snapshotChanges().subscribe(snip => {
-      if (snip.payload.exists) {
-        this.presentToast("Phone Number already exists !!")
-      } else {
-        this.addUser(user);
-      }
-    })
+    return new Promise((resolve, reject) => {
+
+      this.firestore.collection("Users").doc(tStrng).get().subscribe(snip => {
+        if (snip.exists) {
+          this.presentToast("Phone Number already exists !!")
+          reject(true);
+        } else {
+          this.addUser(user);
+          resolve(true);
+        }
+      })
+    });
+
   }
 
-  addUser(user) {
-    console.log(user);
+  async addUser(user) {
+    let phoneNum = user.Phone;
+    return this.firestore.collection("Users").doc(phoneNum).set(user)
+
+      .then(() => {
+        this.presentToast("User Created");
+        this.navCtrl.navigateRoot("/clients").then(() => {
+          this.feedback(user);
+        });
+      });
   }
 
-  getUsers() {
-    return this.firestore.collection('Users').snapshotChanges();
+  getUsers(num) {
+    return this.firestore.collection('Users', ref => ref.orderBy("Name").limit(num)).snapshotChanges();
+
   }
   getUser(key) {
     return this.firestore.doc(`Users/${key}`).valueChanges();
   }
   async updateUser(user) {
 
-
     return this.firestore.collection("Users")
-      .doc(user.key).set({ Name: user.Name }, { merge: true })
+      .doc(user.key).set({ Name: user.Name.toLowerCase() }, { merge: true })
 
       .then(() => {
         this.navCtrl.navigateForward(`/user-details/${user.key}`)
@@ -71,7 +92,14 @@ export class UserService {
     })
   }
 
+  async feedback(u) {
+    const modal = await this.modalCtrl.create({
+      component: FeedbackComponent,
+      backdropDismiss: false,
+    });
+    return await modal.present();
 
+  }
   //Support
   async presentToast(msg) {
     const toast = await this.toastCtrl.create({

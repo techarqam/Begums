@@ -13,6 +13,8 @@ export class EditUserComponent implements OnInit {
   userId;
   user;
 
+  showLoader: boolean = false;
+
   constructor(
     private router: ActivatedRoute,
     public alertCtrl: AlertController,
@@ -39,7 +41,12 @@ export class EditUserComponent implements OnInit {
     let temp = this.userService.user.value;
     if (temp.Name) {
       temp.key = this.userId;
-      this.userService.updateUser(temp);
+
+      this.showLoader = true;
+
+      this.userService.updateUser(temp).then(() => {
+        this.showLoader = false;
+      });
     } else {
       this.userService.presentToast("Enter a Name for the User");
     }

@@ -22,7 +22,9 @@
                 <!-- <ion-navbar color="primary">
                     <ion-title>New Client</ion-title>
                   </ion-navbar> -->
-                <form [formGroup]="this.userService.user">
+                <app-loader *ngIf="showLoader"></app-loader>
+
+                <form [formGroup]="this.userService.user" *ngIf="!showLoader">
 
 
                   <ion-item margin-vertical shape="round">
