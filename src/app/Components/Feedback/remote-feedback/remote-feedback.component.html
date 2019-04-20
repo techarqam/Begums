@@ -1,3 +1,40 @@
-<p>
-  remote-feedback works!
-</p>
+<ion-content>
+
+  <ion-slides>
+    <ion-slide>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="10" offset="1" size-md="4" offset-md="4">
+
+            <ion-card class="noBacki">
+              <ion-card-content>
+
+                <ion-card-title>
+                  Rate your Experience with Begums
+                </ion-card-title>
+                <form [formGroup]="this.feedbackService.feedbackModel">
+
+
+
+                  <!-- <ionic3-star-rating activeIcon="ios-star" defaultIcon="ios-star" activeColor="#949363" defaultColor="white"
+                      readonly="false" [rating]="0">
+                    </ionic3-star-rating> -->
+                  <ion-item class="content">
+                    <ion-label position="floating">Comment</ion-label>
+                    <ion-input type="text" fromControlName="comment"></ion-input>
+                  </ion-item>
+
+                  <ion-button class="ion-margin-top" (click)="sendFeedback()">Submit</ion-button>
+
+                </form>
+              </ion-card-content>
+            </ion-card>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

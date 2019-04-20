@@ -14,6 +14,8 @@ import { FeedbackTemplateComponent } from './Components/Templates/feedback-templ
 import { EditUserComponent } from './Components/Users/edit-user/edit-user.component';
 import { LoginGGuard } from './Guards/login-g.guard';
 import { LoginComponent } from './Components/Auth/login/login.component';
+import { RemoteFeedbackComponent } from './Components/Feedback/remote-feedback/remote-feedback.component';
+import { DisplayBirthdaysComponent } from './Components/display-birthdays/display-birthdays.component';
 
 
 const routes: Routes = [
@@ -92,6 +94,15 @@ const routes: Routes = [
   {
     path: 'feedback-template',
     component: FeedbackTemplateComponent,
+    canActivate: [LoginGGuard],
+  },
+  {
+    path: 'user-feedback/:id',
+    component: RemoteFeedbackComponent,
+  },
+  {
+    path: 'birthdays',
+    component: DisplayBirthdaysComponent,
     canActivate: [LoginGGuard],
   }
 ]

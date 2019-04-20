@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController, ToastController } from '@ionic/angular';
+import { AlertController, } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/Users/user.service';
 
@@ -19,7 +19,6 @@ export class EditUserComponent implements OnInit {
     private router: ActivatedRoute,
     public alertCtrl: AlertController,
     private userService: UserService,
-    private toastCtrl: ToastController
   ) {
   }
 

@@ -38,9 +38,10 @@ import { BirthdayTemplateComponent } from './Components/Templates/birthday-templ
 import { FeedbackTemplateComponent } from './Components/Templates/feedback-template/feedback-template.component';
 import { LoginGGuard } from './Guards/login-g.guard';
 import { LoginComponent } from './Components/Auth/login/login.component';
-// import { StarRatingModule } from 'ionic3-star-rating';
 import { FormsModule } from '@angular/forms';
 import { RemoteFeedbackComponent } from './Components/Feedback/remote-feedback/remote-feedback.component';
+import { DisplayBirthdaysComponent } from './Components/display-birthdays/display-birthdays.component';
+// import { IonicRatingModule } from 'ionic4-rating';
 
 firebase.initializeApp({
   apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
@@ -70,6 +71,7 @@ firebase.initializeApp({
     BirthdayTemplateComponent,
     FeedbackTemplateComponent,
     RemoteFeedbackComponent,
+    DisplayBirthdaysComponent,
   ],
   entryComponents: [
     LoaderComponent,
@@ -86,8 +88,7 @@ firebase.initializeApp({
     AngularFirestoreModule,
     AngularFireAuthModule,
     FormsModule,
-
-
+    // IonicRatingModule, 
   ],
   providers: [
     StatusBar,
