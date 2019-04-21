@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/Services/Auth/login.service';
 import { NavController } from '@ionic/angular';
+import { BirthdayService } from 'src/app/Services/Birthday/birthday.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,9 +13,24 @@ export class DashboardComponent implements OnInit {
   constructor(
     private logoutService: LoginService,
     public navCtrl: NavController,
+    public birthdayService: BirthdayService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.birthdayService.sendBirthDayWishes().then(() => {
+      this.birthdayService.sendFestivities();
+    });
+  }
+
+
+
+
+
+
+
+
+
+
 
 
   gtClients() {
