@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PromotionsService } from 'src/app/Services/Promotions/promotions.service';
 import { Observable } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-bulk-promotion',
@@ -15,6 +16,7 @@ export class BulkPromotionComponent implements OnInit {
   loader: boolean = true;
   constructor(
     private promService: PromotionsService,
+    public alertCtrl: AlertController,
   ) { }
 
   ngOnInit() {
@@ -22,7 +24,28 @@ export class BulkPromotionComponent implements OnInit {
     this.bulkPromos.subscribe(() => { this.loader = false });
   }
 
-  sendPromotion() {
+  async sendConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Send Message to all Clients ?',
+      buttons: [
+        {
+          text: 'No, Its a mistake',
+          role: 'cancel',
+          handler: () => {
+          }
+        }, {
+          text: "Yes, I'm sure",
+          handler: () => {
+            this.sendPromotion();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async sendPromotion() {
     if (this.promService.bulkPromModal.valid) {
       this.showLoader = true;
       let temp = this.promService.bulkPromModal.value;

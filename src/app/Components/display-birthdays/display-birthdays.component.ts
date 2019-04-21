@@ -15,9 +15,10 @@ export class DisplayBirthdaysComponent implements OnInit {
   constructor(
     private birthService: BirthdayService,
   ) {
-    this.birthService.getBirthDays().subscribe(snap => {
-      this.bds = snap;
-    });
+    // this.birthService.getBirthDays().subscribe(snap => {
+    //   console.log(snap)
+    //   this.bds = snap;
+    // });
   }
 
   ngOnInit() { }

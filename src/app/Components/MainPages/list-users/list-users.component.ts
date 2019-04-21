@@ -23,7 +23,6 @@ export class ListUsersComponent implements OnInit {
     private userService: UserService,
     private navCtrl: NavController,
     private modalCtrl: ModalController,
-    private firestore: AngularFirestore,
   ) {
     this.getUsers();
 
@@ -47,8 +46,7 @@ export class ListUsersComponent implements OnInit {
     this.users = this.userService.getUsers(this.frstsNum);
     this.users.subscribe(() => { this.showLoader = false });
   }
-  initializeItems(): void {
-  }
+
   addUser() {
     this.navCtrl.navigateForward('/add-client')
   }

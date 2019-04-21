@@ -5,7 +5,9 @@
       <ion-col size="10" offset="1" size-md="4" offset-md="4">
         <ion-card>
           <ion-item *ngFor="let b of bds ">
-            {{b | json}}
+            <ion-item *ngFor="let b of b.payload.doc ">
+              {{b | json}}
+            </ion-item>
           </ion-item>
         </ion-card>
       </ion-col>

@@ -71,7 +71,9 @@ export class UserService {
 
   getUsers(num) {
     return this.firestore.collection('Users', ref => ref.orderBy("Name").limit(num)).snapshotChanges();
-
+  }
+  getallUsers() {
+    return this.firestore.collection('Users').valueChanges();
   }
   getUser(key) {
     return this.firestore.doc(`Users/${key}`).valueChanges();
