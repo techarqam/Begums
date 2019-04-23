@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import *as moment from 'moment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MessagingService } from '../Messaging/messaging.service';
+import * as firebase from 'firebase';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,8 +41,21 @@ export class FeedbackService {
   async submitRating(feedback) {
     return this.db.collection("Users")
       .doc(feedback.Phone).set(feedback, { merge: true })
-      
-      
-      // console.log(feedback);
+
+
+    // console.log(feedback);
   }
+
+  // bDb() {
+  //   firebase.database().ref("Users").once("value", snap => {
+  //     snap.forEach(snip => {
+
+  //       this.db.collection("Users").doc(snip.val().Phone).set(snip.val())
+
+  //       console.log(snip.val())
+  //     })
+  //   })
+
+  // }
+
 }
