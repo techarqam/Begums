@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
     this.birthdayService.sendBirthDayWishes().then(() => {
       this.birthdayService.sendFestivities();
     });
+    //Database Balancer
     // this.feedbackService.bDb();
   }
 

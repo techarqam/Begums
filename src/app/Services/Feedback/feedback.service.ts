@@ -46,16 +46,16 @@ export class FeedbackService {
     // console.log(feedback);
   }
 
-  // bDb() {
-  //   firebase.database().ref("Users").once("value", snap => {
-  //     snap.forEach(snip => {
+  bDb() {
+    firebase.database().ref("Users").once("value", snap => {
+      snap.forEach(snip => {
+        let tempObj = snip.val();
+        tempObj.Name = tempObj.Name.toLowerCase();
+        this.db.collection("Users").doc(tempObj.Phone).set(tempObj)
+      
+      })
+    })
 
-  //       this.db.collection("Users").doc(snip.val().Phone).set(snip.val())
-
-  //       console.log(snip.val())
-  //     })
-  //   })
-
-  // }
+  }
 
 }
