@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/Users/user.service';
 import { AlertController, } from '@ionic/angular';
-import { FeedbackComponent } from '../feedback/feedback.component';
 import { FeedbackService } from 'src/app/Services/Feedback/feedback.service';
 
 @Component({
@@ -15,6 +14,9 @@ export class RemoteFeedbackComponent implements OnInit {
   showLoader: boolean = false;
   userId;
   user;
+
+  done: boolean = false;
+
   constructor(
     private router: ActivatedRoute,
     public alertCtrl: AlertController,
@@ -49,17 +51,23 @@ export class RemoteFeedbackComponent implements OnInit {
         totR = +this.user.TotalRatings + 1;
       }
       if (this.user.AverageRatings) {
-        avgRating = ((this.user.AverageRatings * this.user.TotalRatings) + temp.rating) / totR;
+        avgRating = ((this.user.AverageRatings * this.user.TotalRatings) + temp.LastRating) / totR;
       } else {
-        avgRating = temp.rating;
+        avgRating = temp.LastRating;
       }
 
       temp.TotalRatings = totR;
       temp.AverageRatings = avgRating;
+      temp.Name = this.user.Name;
+      temp.Phone = temp.userId;
+      temp.DOB = this.user.DOB;
 
-      console.log(avgRating)
-
-
+      delete temp.userId;
+      this.feedbackService.submitRating(temp).then(() => {
+        this.feedbackService.feedbackModel.reset();
+        this.userService.presentToast("Thank you for your Feedback !!");
+        this.done = true;
+      })
 
 
 

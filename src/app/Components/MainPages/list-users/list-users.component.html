@@ -72,7 +72,7 @@
                 <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().DOB | date : 'd MMM, y'}}</h2>
               </ion-col>
               <ion-col grr padding-top size="12" size-md="2">
-                <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().AverageRatings }}</h2>
+                <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().AverageRatings | number:'1.0-0' }}</h2>
               </ion-col>
               <ion-col size="12" size-md="2" text-md-center>
 

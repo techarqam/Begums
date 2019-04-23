@@ -84,7 +84,7 @@ export class BirthdayService {
 
 
         } else {
-          this.userService.presentToast("No Feestivities Today");
+          this.userService.presentToast("No Festivities Today");
         }
       })
     })

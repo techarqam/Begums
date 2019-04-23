@@ -12,7 +12,6 @@ export class FeedbackService {
   feedbackModel = new FormGroup({
     LastRating: new FormControl("", Validators.required),
     LastComment: new FormControl(""),
-    TimeStamp: new FormControl(moment().format())
   })
   constructor(
     private db: AngularFirestore,
@@ -38,7 +37,11 @@ export class FeedbackService {
   }
 
 
-  submitRating(feedback) {
-    console.log(feedback);
+  async submitRating(feedback) {
+    return this.db.collection("Users")
+      .doc(feedback.Phone).set(feedback, { merge: true })
+      
+      
+      // console.log(feedback);
   }
 }

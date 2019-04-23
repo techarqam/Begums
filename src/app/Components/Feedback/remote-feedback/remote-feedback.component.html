@@ -18,7 +18,7 @@
 
         <ion-card-content>
 
-          <form [formGroup]="this.feedbackService.feedbackModel">
+          <form [formGroup]="this.feedbackService.feedbackModel" *ngIf="!done" >
 
             <div style="margin-left: 20%;">
               <bar-rating formControlName="LastRating" [max]="5"></bar-rating>
@@ -32,6 +32,8 @@
             <ion-button class="ion-margin-vertical" (click)="sendFeedback()">Submit</ion-button>
 
           </form>
+          <ion-card-title *ngIf="done" >Thank you for your valuable Feedback</ion-card-title>
+
         </ion-card-content>
 
       </ion-card>
