@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/Users/user.service';
 import { Observable, Subject } from 'rxjs';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController, ModalController, AlertController } from '@ionic/angular';
 import { FeedbackComponent } from '../../Feedback/feedback/feedback.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { FeedbackService } from 'src/app/Services/Feedback/feedback.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ListUsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private navCtrl: NavController,
-    private modalCtrl: ModalController,
+    private feedbackService: FeedbackService,
+    private alertCtrl: AlertController,
   ) {
     this.getUsers();
 
@@ -51,16 +53,43 @@ export class ListUsersComponent implements OnInit {
     this.navCtrl.navigateForward('/add-client')
   }
 
-  async feedback(u) {
-    const modal = await this.modalCtrl.create({
-      component: FeedbackComponent,
-      backdropDismiss: false,
+  async confirmFeedback(u) {
+    const alert = await this.alertCtrl.create({
+      header: 'Request Feedback ? ',
+      message: 'Send an SMS requesting Feedback to ' + u.payload.doc.data().Name,
+      buttons: [
+        {
+          text: 'No, Its a mistake',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Yes, I understand',
+          handler: () => {
+            this.feedback(u);
+          }
+        }
+      ]
     });
-    return await modal.present();
 
+    await alert.present();
+  }
+
+
+
+  async feedback(u) {
+    this.feedbackService.reqFeedback(u.payload.doc.id).then(() => {
+      this.userService.presentToast("SMS Sent");
+    });
+    // const modal = await this.modalCtrl.create({
+    //   component: FeedbackComponent,
+    //   componentProps: { user: u.payload.doc.id },
+    //   backdropDismiss: false,
+    // });
+    // return await modal.present();
   }
   userDetails(userKey) {
-    // console.log(userKey);
     this.navCtrl.navigateForward(`/user-details/${userKey}`)
   }
   loadMore() {

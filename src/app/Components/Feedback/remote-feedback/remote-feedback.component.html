@@ -1,40 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Begum's Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
 <ion-content>
+
+
 
   <ion-slides>
     <ion-slide>
 
-      <ion-grid>
-        <ion-row>
-          <ion-col size="10" offset="1" size-md="4" offset-md="4">
-
-            <ion-card class="noBacki">
-              <ion-card-content>
-
-                <ion-card-title>
-                  Rate your Experience with Begums
-                </ion-card-title>
-                <form [formGroup]="this.feedbackService.feedbackModel">
 
 
+      <ion-card class="noBacki">
 
-                  <!-- <ionic3-star-rating activeIcon="ios-star" defaultIcon="ios-star" activeColor="#949363" defaultColor="white"
-                      readonly="false" [rating]="0">
-                    </ionic3-star-rating> -->
-                  <ion-item class="content">
-                    <ion-label position="floating">Comment</ion-label>
-                    <ion-input type="text" fromControlName="comment"></ion-input>
-                  </ion-item>
+        <ion-card-content>
 
-                  <ion-button class="ion-margin-top" (click)="sendFeedback()">Submit</ion-button>
+          <form [formGroup]="this.feedbackService.feedbackModel">
 
-                </form>
-              </ion-card-content>
-            </ion-card>
+            <div style="margin-left: 20%;">
+              <bar-rating formControlName="rating" [max]="5"></bar-rating>
+            </div>
 
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+
+            <ion-item class="ion-margin-horizontal">
+              <ion-label position="floating">Comment</ion-label>
+              <ion-input type="text" formControlName="comment"></ion-input>
+            </ion-item>
+            <ion-button class="ion-margin-vertical" (click)="submitRating()">Submit</ion-button>
+
+          </form>
+        </ion-card-content>
+
+      </ion-card>
     </ion-slide>
   </ion-slides>
+
 
 </ion-content>

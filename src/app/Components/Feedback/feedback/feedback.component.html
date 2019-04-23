@@ -11,26 +11,37 @@
 
 
 <ion-content>
-  <ion-card class="noBacki">
 
 
-    <form [formGroup]="this.feedbackService.feedbackModel">
 
-      <ion-slides>
-        <ion-slide>
-          <!-- <ionic3-star-rating activeIcon="ios-star" defaultIcon="ios-star" activeColor="#949363" defaultColor="white"
-              readonly="false" [rating]="0">
-            </ionic3-star-rating> -->
+  <ion-slides>
+    <ion-slide>
 
-          <ion-item class="content">
-            <ion-label position="floating">Comment</ion-label>
-            <ion-input type="text" fromControlName="comment"></ion-input>
-          </ion-item>
 
-          <ion-button (click)="submitRating()" shap="round">Submit</ion-button>
-        </ion-slide>
-      </ion-slides>
 
-    </form>
-  </ion-card>
+      <ion-card class="noBacki">
+
+        <ion-card-content>
+
+          <form [formGroup]="this.feedbackService.feedbackModel">
+
+            <div style="margin-left: 20%;">
+              <bar-rating formControlName="rating" [max]="5"></bar-rating>
+            </div>
+
+
+            <ion-item class="ion-margin-horizontal">
+              <ion-label position="floating">Comment</ion-label>
+              <ion-input type="text" formControlName="comment"></ion-input>
+            </ion-item>
+            <ion-button class="ion-margin-vertical" (click)="submitRating()">Submit</ion-button>
+
+          </form>
+        </ion-card-content>
+
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+
 </ion-content>

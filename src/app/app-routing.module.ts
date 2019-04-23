@@ -35,11 +35,11 @@ const routes: Routes = [
     component: LoginComponent
   },
 
-  {
-    path: 'feedback',
-    component: FeedbackComponent,
-    canActivate: [LoginGGuard],
-  },
+  // {
+  //   path: 'feedback',
+  //   component: FeedbackComponent,
+  //   canActivate: [LoginGGuard],
+  // },
   {
     path: 'add-fest',
     component: AddFestComponent,
@@ -97,7 +97,7 @@ const routes: Routes = [
     canActivate: [LoginGGuard],
   },
   {
-    path: 'user-feedback/:id',
+    path: 'ufb',
     component: RemoteFeedbackComponent,
   },
   {

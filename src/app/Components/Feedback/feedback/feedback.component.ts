@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from 'src/app/Services/Feedback/feedback.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-feedback',
@@ -9,16 +9,20 @@ import { ModalController } from '@ionic/angular';
 })
 export class FeedbackComponent implements OnInit {
 
+  key = this.navParams.get("user");
+
   constructor(
     private feedbackService: FeedbackService,
     private modalCtrl: ModalController,
-  ) { }
+    private navParams: NavParams,
+  ) {
+    console.log(this.key)
+  }
 
   ngOnInit() { }
   submitRating() {
     let temp = this.feedbackService.feedbackModel.value;
     this.feedbackService.submitRating(temp);
-    console.log(temp);
   }
 
 

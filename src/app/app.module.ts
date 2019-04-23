@@ -42,6 +42,8 @@ import { FormsModule } from '@angular/forms';
 import { RemoteFeedbackComponent } from './Components/Feedback/remote-feedback/remote-feedback.component';
 import { DisplayBirthdaysComponent } from './Components/display-birthdays/display-birthdays.component';
 // import { IonicRatingModule } from 'ionic4-rating';
+// import { IonicRatingModule } from 'ionic-rating';
+import { BarRatingModule } from "ngx-bar-rating";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
@@ -83,7 +85,9 @@ firebase.initializeApp({
     IonicModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
+    BarRatingModule,
     // StarRatingModule,
+    // IonicRatingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
