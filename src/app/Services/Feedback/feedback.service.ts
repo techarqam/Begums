@@ -30,10 +30,10 @@ export class FeedbackService {
   }
 
 
-  reqFeedback(phone) {
+  async reqFeedback(phone) {
     let tempArray: Array<any> = [];
     tempArray.push(phone);
-    this.feedTemplate = this.feedTemplate + "\n" + "http://begums.tk/ufb/" + phone;
+    this.feedTemplate = this.feedTemplate + "%0A" + "http://begums.tk/ufb/" + phone;
     return this.messagingService.sendMessage(this.feedTemplate, tempArray);
   }
 

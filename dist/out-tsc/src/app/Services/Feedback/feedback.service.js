@@ -23,7 +23,7 @@ var FeedbackService = /** @class */ (function () {
         });
     };
     FeedbackService.prototype.reqFeedback = function (phone) {
-        this.feedTemplate = this.feedTemplate + "\nbegums.tk/ufb/" + phone;
+        this.feedTemplate = this.feedTemplate + "%0A" + "begums.tk/ufb/" + phone;
         return this.messagingService.sendMessage(this.feedTemplate, phone);
     };
     FeedbackService.prototype.submitRating = function (feedback) {

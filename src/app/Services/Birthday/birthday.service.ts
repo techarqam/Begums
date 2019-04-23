@@ -71,7 +71,7 @@ export class BirthdayService {
 
         if (temp.FestDate == this.cDob && temp.Status == "Not Completed") {
           let uurl = "https://begums.tk/proms/" + temp.Name;
-          let m: string = temp.Message + "\n" + uurl;
+          let m: string = temp.Message + "%0A" + uurl;
 
           this.userService.getallUsers().subscribe(snap => {
             this.messageService.sendMessage(m, snap).then(() => {

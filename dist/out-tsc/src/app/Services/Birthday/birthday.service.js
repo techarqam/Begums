@@ -71,7 +71,7 @@ var BirthdayService = /** @class */ (function () {
                         var temp = sanip;
                         temp.FestDate = moment(temp.Date).format("DDMM");
                         if (temp.FestDate == _this.cDob && temp.Status == "Not Completed") {
-                            var m_1 = temp.Message + "\n" + temp.ImgUrl;
+                            var m_1 = temp.Message + "%0A" + temp.ImgUrl;
                             _this.userService.getallUsers().subscribe(function (snap) {
                                 _this.messageService.sendMessage(m_1, snap).then(function () {
                                     _this.db.collection("Festivities").doc(temp.Name).set({ Status: "Completed" }, { merge: true }).then(function () {
