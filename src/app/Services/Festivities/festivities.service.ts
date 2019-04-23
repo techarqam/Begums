@@ -37,7 +37,7 @@ export class FestivitiesService {
   // }
 
   async addFest(fest) {
-
+    fest.Name = fest.Name.toLowerCase();
     return firebase.storage().ref("Festivities").child(fest.Name).put(fest.Image).then(() => {
       firebase.storage().ref("Festivities").child(fest.Name).getDownloadURL().then((dURL) => {
         fest.ImgUrl = dURL;

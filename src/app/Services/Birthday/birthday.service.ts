@@ -27,11 +27,6 @@ export class BirthdayService {
     this.getTemplate();
   }
 
-  // getBirthDays() {
-  // }
-
-
-
   getTemplate() {
     this.db.doc(`Templates/Birthday`).snapshotChanges().subscribe(snap => {
       let temp: any = snap.payload.data();
@@ -75,7 +70,8 @@ export class BirthdayService {
         temp.FestDate = moment(temp.Date).format("DDMM");
 
         if (temp.FestDate == this.cDob && temp.Status == "Not Completed") {
-          let m: string = temp.Message + "\n" + temp.ImgUrl;
+          let uurl = "https://begums.tk/proms/" + temp.Name;
+          let m: string = temp.Message + "\n" + uurl;
 
           this.userService.getallUsers().subscribe(snap => {
             this.messageService.sendMessage(m, snap).then(() => {

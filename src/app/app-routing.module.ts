@@ -16,6 +16,7 @@ import { LoginGGuard } from './Guards/login-g.guard';
 import { LoginComponent } from './Components/Auth/login/login.component';
 import { RemoteFeedbackComponent } from './Components/Feedback/remote-feedback/remote-feedback.component';
 import { DisplayBirthdaysComponent } from './Components/display-birthdays/display-birthdays.component';
+import { PromDisplayComponent } from './Components/Extra/prom-display/prom-display.component';
 
 
 const routes: Routes = [
@@ -104,6 +105,10 @@ const routes: Routes = [
     path: 'birthdays',
     component: DisplayBirthdaysComponent,
     canActivate: [LoginGGuard],
+  },
+  {
+    path: 'proms/:id',
+    component: PromDisplayComponent,
   }
 ]
 
