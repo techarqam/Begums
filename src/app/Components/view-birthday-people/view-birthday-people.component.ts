@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NavParams } from '@ionic/angular';
+import { NavParams, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,7 +16,8 @@ export class ViewBirthdayPeopleComponent implements OnInit {
 
   constructor(
     private db: AngularFirestore,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private modalCtrl: ModalController,
   ) { }
 
   ngOnInit() {
@@ -24,5 +25,7 @@ export class ViewBirthdayPeopleComponent implements OnInit {
     this.people = this.db.collection('BDs').doc(this.key.id).collection("Clients").snapshotChanges();
 
   }
-
+  close() {
+    this.modalCtrl.dismiss();
+  }
 }

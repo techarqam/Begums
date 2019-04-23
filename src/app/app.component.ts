@@ -9,6 +9,49 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  public appPages = [
+    {
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: 'ios-analytics'
+    },
+    {
+      title: 'Clients',
+      url: '/clients',
+      icon: 'ios-cash'
+    },
+    {
+      title: 'Group Promotions',
+      url: '/bulk-promotions',
+      icon: 'ios-cash'
+    },
+    {
+      title: 'Select Member Promotion',
+      url: '/select-promotion',
+      icon: 'md-cart'
+    },
+    {
+      title: 'Festivals',
+      url: '/festivities',
+      icon: 'logo-buffer'
+    },
+    {
+      title: 'Birthday Template',
+      url: '/profile',
+      icon: 'ios-person'
+    },
+    {
+      title: 'Feedback Template',
+      url: '/faqs',
+      icon: 'help'
+    },
+    {
+      title: 'Birthdays',
+      url: '/birthdays',
+      icon: 'help'
+    },
+  ];
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

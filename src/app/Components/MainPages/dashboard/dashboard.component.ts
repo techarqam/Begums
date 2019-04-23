@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/Services/Auth/login.service';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { BirthdayService } from 'src/app/Services/Birthday/birthday.service';
 
 @Component({
@@ -14,7 +14,10 @@ export class DashboardComponent implements OnInit {
     private logoutService: LoginService,
     public navCtrl: NavController,
     public birthdayService: BirthdayService,
-  ) { }
+    public menuCrtl: MenuController,
+  ) {
+    this.menuCrtl.enable(true);
+  }
 
   ngOnInit() {
     this.birthdayService.sendBirthDayWishes().then(() => {
@@ -29,7 +32,9 @@ export class DashboardComponent implements OnInit {
 
 
 
-
+  viewMenu() {
+    this.menuCrtl.open();
+  }
 
 
 
