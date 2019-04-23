@@ -1,4 +1,3 @@
-// http://ionicframework.com/docs/theming/
 @import "~@ionic/angular/css/core.css";
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
@@ -9,22 +8,14 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import '~ngx-bar-rating/themes/br-default-theme';
+@import "~ngx-bar-rating/themes/br-default-theme";
 
 ion-content {
-  --background: url("/assets/imgs/bgm.png"); /* The image used */
-
-  background-color: #f4f5f8; /* Used if the image is unavailable */
-
-  background-position: initial; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  //  background-size: auto;
+  --background: url("/assets/imgs/bgm.png");
+  background-color: #f4f5f8;
+  background-position: initial;
+  background-repeat: no-repeat;
 }
-// ion-content{
-//   --background : url("/assets/imgs/bgm.png");
-//   background-size:cover;
-
-// }
 
 .noBacki {
   background: white !important;
@@ -34,7 +25,6 @@ ion-button,
 ion-title {
   color: white !important;
 }
-
 //User list Table Css
 .tableTop {
   background: #949363;

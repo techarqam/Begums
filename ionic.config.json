@@ -1,5 +1,7 @@
 {
   "name": "begums",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

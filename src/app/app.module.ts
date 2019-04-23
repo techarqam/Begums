@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { environment } from "src/environments/environment";
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
@@ -41,19 +40,19 @@ import { LoginComponent } from './Components/Auth/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RemoteFeedbackComponent } from './Components/Feedback/remote-feedback/remote-feedback.component';
 import { DisplayBirthdaysComponent } from './Components/display-birthdays/display-birthdays.component';
-// import { IonicRatingModule } from 'ionic4-rating';
-// import { IonicRatingModule } from 'ionic-rating';
 import { BarRatingModule } from "ngx-bar-rating";
 import { ViewBirthdayPeopleComponent } from './Components/view-birthday-people/view-birthday-people.component';
 
-firebase.initializeApp({
+let firebaseConfig = {
   apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
   authDomain: "begums-crm.firebaseapp.com",
   databaseURL: "https://begums-crm.firebaseio.com",
   projectId: "begums-crm",
   storageBucket: "begums-crm.appspot.com",
   messagingSenderId: "464293639017"
-})
+}
+
+firebase.initializeApp(firebaseConfig)
 
 
 @NgModule({
@@ -89,7 +88,7 @@ firebase.initializeApp({
     AppRoutingModule,
     ReactiveFormsModule,
     BarRatingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
     FormsModule,

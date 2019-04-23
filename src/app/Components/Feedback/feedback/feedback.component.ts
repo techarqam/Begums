@@ -12,7 +12,7 @@ export class FeedbackComponent implements OnInit {
   key = this.navParams.get("user");
 
   constructor(
-    private feedbackService: FeedbackService,
+    public feedbackService: FeedbackService,
     private modalCtrl: ModalController,
     private navParams: NavParams,
   ) {

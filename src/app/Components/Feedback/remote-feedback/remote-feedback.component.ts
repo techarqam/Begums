@@ -18,24 +18,18 @@ export class RemoteFeedbackComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     public alertCtrl: AlertController,
-    private feedbackService: FeedbackService,
-    private userService: UserService
+    public feedbackService: FeedbackService,
   ) {
   }
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.userId = params['id'];
     });
-    // this.getUser();
   }
 
-  // getUser() {
-  //   this.userService.getUser(this.userId).subscribe(snap => {
-  //     this.user = snap;
-  //     console.log(this.user)
-  //   })
-  // }
+  submitRating() {
 
+  }
   sendFeedback() {
     // if (this.feedbackService.feedbackModel.valid) {
     let temp = this.feedbackService.feedbackModel.value;
