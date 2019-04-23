@@ -18,37 +18,37 @@ export class AppComponent {
     {
       title: 'Clients',
       url: '/clients',
-      icon: 'ios-cash'
+      icon: 'ios-people'
     },
     {
       title: 'Group Promotions',
       url: '/bulk-promotions',
-      icon: 'ios-cash'
+      icon: 'text'
     },
     {
       title: 'Select Member Promotion',
       url: '/select-promotion',
-      icon: 'md-cart'
+      icon: 'checkbox-outline'
     },
     {
       title: 'Festivals',
       url: '/festivities',
-      icon: 'logo-buffer'
+      icon: 'moon'
     },
     {
       title: 'Birthday Template',
-      url: '/profile',
-      icon: 'ios-person'
+      url: '/birthday-template',
+      icon: 'list-box'
     },
     {
       title: 'Feedback Template',
-      url: '/faqs',
-      icon: 'help'
+      url: '/feedback-template',
+      icon: 'list-box'
     },
     {
       title: 'Birthdays',
       url: '/birthdays',
-      icon: 'help'
+      icon: 'ios-egg'
     },
   ];
 

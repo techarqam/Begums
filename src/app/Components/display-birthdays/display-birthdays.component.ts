@@ -12,10 +12,10 @@ import { ViewBirthdayPeopleComponent } from '../view-birthday-people/view-birthd
 export class DisplayBirthdaysComponent implements OnInit {
 
   bds: Array<any> = [];
+  showLoader: boolean = true;
 
 
   constructor(
-    // private birthService: BirthdayService,
     private modalCtrl: ModalController,
     private db: AngularFirestore,
   ) {
@@ -30,6 +30,7 @@ export class DisplayBirthdaysComponent implements OnInit {
         this.bds.push(b);
       })
     });
+    this.showLoader = false;
   }
 
   ngOnInit() { }
