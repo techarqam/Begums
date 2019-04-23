@@ -19,27 +19,55 @@ export class RemoteFeedbackComponent implements OnInit {
     private router: ActivatedRoute,
     public alertCtrl: AlertController,
     public feedbackService: FeedbackService,
+    private userService: UserService,
   ) {
   }
+
+
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.userId = params['id'];
     });
+    this.userDetails();
   }
 
-  submitRating() {
 
+  userDetails() {
+    this.userService.getUser(this.userId).subscribe(snap => {
+      this.user = snap;
+    });
   }
-  sendFeedback() {
-    // if (this.feedbackService.feedbackModel.valid) {
-    let temp = this.feedbackService.feedbackModel.value;
-    temp.userId = this.userId;
-    this.feedbackService.submitRating(temp)
-    // .then(() => {
-    // })
-    // } else {
-    //   this.userService.presentToast("Select Stars to Rate Us !!")
-    // }
+
+  async sendFeedback() {
+    if (this.feedbackService.feedbackModel.valid) {
+
+      let temp = this.feedbackService.feedbackModel.value;
+      temp.userId = this.userId;
+      let avgRating: number = 0;
+      let totR: number = 1;
+      if (this.user.TotalRatings) {
+        totR = +this.user.TotalRatings + 1;
+      }
+      if (this.user.AverageRatings) {
+        avgRating = ((this.user.AverageRatings * this.user.TotalRatings) + temp.rating) / totR;
+      } else {
+        avgRating = temp.rating;
+      }
+
+      temp.TotalRatings = totR;
+      temp.AverageRatings = avgRating;
+
+      console.log(avgRating)
+
+
+
+
+
+
+    } else {
+      this.userService.presentToast("Select Stars to Rate Us !!")
+    }
+
   }
 
 

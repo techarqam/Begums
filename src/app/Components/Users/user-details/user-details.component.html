@@ -1,6 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title> Client Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,16 +19,16 @@
     <ion-row>
       <ion-col class="mainCol" push-md="3" size-md="6" size="12">
         <ion-card class="flpAnim noBacki">
-            <ion-card-header>
-                <ion-toolbar color="primary">
-                  <ion-card-title> Client Details</ion-card-title>
-                </ion-toolbar>
-              </ion-card-header>
+          <ion-card-header>
+            <ion-toolbar color="primary">
+              <ion-card-title> Client Details</ion-card-title>
+            </ion-toolbar>
+          </ion-card-header>
           <ion-row>
             <ion-col size="12" class="noBacki" size-md="12">
               <ion-card-content>
 
-                
+
                 <!-- {{user |json}} -->
                 <ion-item class="ion-margin-vertical">
                   <p color="primary" slot="start">Client Name</p>
@@ -33,24 +42,24 @@
 
 
                 <ion-item margin-vertical round>
-                    <p color="primary" slot="start">Birthday</p>
-                    <p slot="end">{{user.DOB }}</p>
+                  <p color="primary" slot="start">Birthday</p>
+                  <p slot="end">{{user.DOB | date : 'dd  MMM, yyyy ' }}</p>
                 </ion-item>
 
                 <ion-item margin-vertical round>
-                    <p color="primary" slot="start">Last Rating</p>
-                   <p slot="end">{{user.LastRating }}</p>
+                  <p color="primary" slot="start">Last Rating</p>
+                  <p slot="end">{{user.LastRating }}</p>
                 </ion-item>
 
 
                 <ion-item margin-vertical round>
-                <p color="primary" slot="start">Last Comment</p>
-                   <p slot="end">{{user.LastComment }}</p>
+                  <p color="primary" slot="start">Last Comment</p>
+                  <p slot="end">{{user.LastComment }}</p>
                 </ion-item>
 
                 <ion-item margin-vertical round>
-                <p color="primary" slot="start">Average Rating</p>
-                   <p slot="end">{{user.AverageRatings }}</p>
+                  <p color="primary" slot="start">Average Rating</p>
+                  <p slot="end">{{user.AverageRatings }}</p>
                 </ion-item>
 
 

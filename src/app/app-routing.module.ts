@@ -97,7 +97,7 @@ const routes: Routes = [
     canActivate: [LoginGGuard],
   },
   {
-    path: 'ufb',
+    path: 'ufb/:id',
     component: RemoteFeedbackComponent,
   },
   {

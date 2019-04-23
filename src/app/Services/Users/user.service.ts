@@ -81,7 +81,7 @@ export class UserService {
   async updateUser(user) {
 
     return this.firestore.collection("Users")
-      .doc(user.key).set({ Name: user.Name.toLowerCase() }, { merge: true })
+      .doc(user.key).set({ Name: user.Name.toLowerCase(), DOB: user.DOB }, { merge: true })
 
       .then(() => {
         this.navCtrl.navigateForward(`/user-details/${user.key}`)

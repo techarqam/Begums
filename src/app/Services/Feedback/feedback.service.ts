@@ -7,12 +7,12 @@ import { MessagingService } from '../Messaging/messaging.service';
   providedIn: 'root'
 })
 export class FeedbackService {
-  feedTemplate: string;
+  feedTemplate: string = "";
 
   feedbackModel = new FormGroup({
-    rating: new FormControl("", Validators.required),
-    comment: new FormControl(""),
-    timeStamp: new FormControl(moment().format())
+    LastRating: new FormControl("", Validators.required),
+    LastComment: new FormControl(""),
+    TimeStamp: new FormControl(moment().format())
   })
   constructor(
     private db: AngularFirestore,
@@ -31,8 +31,10 @@ export class FeedbackService {
 
 
   reqFeedback(phone) {
-    this.feedTemplate = this.feedTemplate + "\nbegums.tk/ufb/" + phone;
-    return this.messagingService.sendMessage(this.feedTemplate, phone);
+    let tempArray: Array<any> = [];
+    tempArray.push(phone);
+    this.feedTemplate = this.feedTemplate + "\n" + "http://begums.tk/ufb/" + phone;
+    return this.messagingService.sendMessage(this.feedTemplate, tempArray);
   }
 
 
