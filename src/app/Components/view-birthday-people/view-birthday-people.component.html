@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Birthdays on {{key.TimeStamp | date : 'd MMM, yyyy'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let p of people | async ">
+    <p slot="start">
+      {{p.payload.doc.data().Name | uppercase}}
+    </p>
+    <p slot="end">
+      {{p.payload.doc.id}}
+    </p>
+  </ion-item>
+</ion-content>

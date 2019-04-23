@@ -27,9 +27,8 @@ export class BirthdayService {
     this.getTemplate();
   }
 
-  getBirthDays() {
-    return this.db.collection('BDs').snapshotChanges();
-  }
+  // getBirthDays() {
+  // }
 
 
 
@@ -61,7 +60,7 @@ export class BirthdayService {
               this.db.collection("BDs").doc(moment().format("YYYYMMDD")).collection("Clients").doc(temp.Phone).set({ Name: temp.Name });
             })
           }).then(() => {
-            this.db.collection("BDs").doc(moment().format("YYYYMMDD")).set({ Delivered: true });
+            this.db.collection("BDs").doc(moment().format("YYYYMMDD")).set({ Delivered: true, TimeStamp: moment().format() });
           });
         })
       }

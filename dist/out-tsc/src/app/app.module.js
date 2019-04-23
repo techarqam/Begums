@@ -1,3 +1,4 @@
+import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -11,7 +12,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
 import * as firebase from 'firebase';
 import { LoginService } from './Services/Auth/login.service';
 import { UserService } from './Services/Users/user.service';
@@ -21,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FestivitiesService } from './Services/Festivities/festivities.service';
 import { LoaderComponent } from './Components/UI/loader/loader.component';
 import { FeedbackService } from './Services/Feedback/feedback.service';
-
 import { TemplateService } from './Services/Templates/template.service';
 import { PromotionsService } from './Services/Promotions/promotions.service';
 import { DashboardComponent } from './Components/MainPages/dashboard/dashboard.component';
@@ -45,69 +44,74 @@ import { DisplayBirthdaysComponent } from './Components/display-birthdays/displa
 // import { IonicRatingModule } from 'ionic-rating';
 import { BarRatingModule } from "ngx-bar-rating";
 import { ViewBirthdayPeopleComponent } from './Components/view-birthday-people/view-birthday-people.component';
-
 firebase.initializeApp({
-  apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
-  authDomain: "begums-crm.firebaseapp.com",
-  databaseURL: "https://begums-crm.firebaseio.com",
-  projectId: "begums-crm",
-  storageBucket: "begums-crm.appspot.com",
-  messagingSenderId: "464293639017"
-})
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    FeedbackComponent,
-    BulkPromotionComponent,
-    SelectPromotionComponent,
-    AddUserComponent,
-    ListUsersComponent,
-    EditUserComponent,
-    UserDetailsComponent,
-    AddFestComponent,
-    ListFestsComponent,
-    LoginComponent,
-    LoaderComponent,
-    BirthdayTemplateComponent,
-    FeedbackTemplateComponent,
-    RemoteFeedbackComponent,
-    DisplayBirthdaysComponent,
-    ViewBirthdayPeopleComponent,
-  ],
-  entryComponents: [
-    LoaderComponent,
-    RemoteFeedbackComponent,
-    ViewBirthdayPeopleComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    ReactiveFormsModule,
-    BarRatingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    FormsModule,
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    LoginService,
-    UserService,
-    BirthdayService,
-    MessagingService,
-    FestivitiesService,
-    FeedbackService,
-    TemplateService,
-    PromotionsService,
-    LoginGGuard,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+    apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
+    authDomain: "begums-crm.firebaseapp.com",
+    databaseURL: "https://begums-crm.firebaseio.com",
+    projectId: "begums-crm",
+    storageBucket: "begums-crm.appspot.com",
+    messagingSenderId: "464293639017"
+});
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = tslib_1.__decorate([
+        NgModule({
+            declarations: [
+                AppComponent,
+                DashboardComponent,
+                FeedbackComponent,
+                BulkPromotionComponent,
+                SelectPromotionComponent,
+                AddUserComponent,
+                ListUsersComponent,
+                EditUserComponent,
+                UserDetailsComponent,
+                AddFestComponent,
+                ListFestsComponent,
+                LoginComponent,
+                LoaderComponent,
+                BirthdayTemplateComponent,
+                FeedbackTemplateComponent,
+                RemoteFeedbackComponent,
+                DisplayBirthdaysComponent,
+                ViewBirthdayPeopleComponent,
+            ],
+            entryComponents: [
+                LoaderComponent,
+                RemoteFeedbackComponent,
+                ViewBirthdayPeopleComponent,
+            ],
+            imports: [
+                BrowserModule,
+                HttpClientModule,
+                IonicModule.forRoot(),
+                AppRoutingModule,
+                ReactiveFormsModule,
+                BarRatingModule,
+                AngularFireModule.initializeApp(environment.firebaseConfig),
+                AngularFirestoreModule,
+                AngularFireAuthModule,
+                FormsModule,
+            ],
+            providers: [
+                StatusBar,
+                SplashScreen,
+                LoginService,
+                UserService,
+                BirthdayService,
+                MessagingService,
+                FestivitiesService,
+                FeedbackService,
+                TemplateService,
+                PromotionsService,
+                LoginGGuard,
+                { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+            ],
+            bootstrap: [AppComponent]
+        })
+    ], AppModule);
+    return AppModule;
+}());
+export { AppModule };
+//# sourceMappingURL=app.module.js.map
