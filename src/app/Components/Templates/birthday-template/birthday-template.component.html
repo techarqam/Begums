@@ -48,12 +48,55 @@
                     <ion-button shape="round" color="medium" (click)="editTrue()">Cancel</ion-button>
                     <ion-button shape="round" (click)="upadateBirthTemp()">Update Template</ion-button>
                   </div>
+
+
+
                 </form>
+
 
               </ion-card-content>
             </ion-col>
           </ion-row>
         </ion-card>
+
+        <ion-card class="noBacki">
+          <ion-card-content>
+
+
+            <img [src]="bImg" alt="Birthday Image" *ngIf="!img1" />
+
+            <app-loader *ngIf="uploadLoader"></app-loader>
+
+            <ion-item *ngIf="img1">
+              <img [src]="img1" class="imgView" />
+              <div class="editBtns">
+                <ion-button class="btnTrash" color="danger" (click)="removeImage()">
+                  Remove
+                </ion-button>
+              </div>
+            </ion-item>
+
+
+            <ion-item class="selects" *ngIf="!img1">
+              <!-- <ion-label color="whiter">Select Image</ion-label> -->
+              <ion-button class="ion-margin">Change Image</ion-button>
+              <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg"
+                id="file-input" style="opacity: 0" #fileInp></ion-input>
+            </ion-item>
+
+
+
+            <ion-slides *ngIf="img1">
+              <ion-slide>
+
+                <ion-button color="primary" class="ion-margin-horizontal" (click)="upload()">Upload
+                </ion-button>
+              </ion-slide>
+            </ion-slides>
+
+          </ion-card-content>
+        </ion-card>
+
       </ion-col>
     </ion-row>
   </ion-grid>

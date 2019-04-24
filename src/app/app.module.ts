@@ -43,6 +43,7 @@ import { DisplayBirthdaysComponent } from './Components/display-birthdays/displa
 import { BarRatingModule } from "ngx-bar-rating";
 import { ViewBirthdayPeopleComponent } from './Components/view-birthday-people/view-birthday-people.component';
 import { PromDisplayComponent } from './Components/Extra/prom-display/prom-display.component';
+import { DisplayBirthdayImageComponent } from './Components/Extra/display-birthday-image/display-birthday-image.component';
 
 let firebaseConfig = {
   apiKey: "AIzaSyBYaBFDld1wDlnY0mYz0LsFfOXuRBXoM5M",
@@ -77,6 +78,7 @@ firebase.initializeApp(firebaseConfig)
     DisplayBirthdaysComponent,
     ViewBirthdayPeopleComponent,
     PromDisplayComponent,
+    DisplayBirthdayImageComponent
   ],
   entryComponents: [
     LoaderComponent,

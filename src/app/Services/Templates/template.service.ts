@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,21 @@ export class TemplateService {
     return this.db.collection(`Templates`).doc(`Feedback`).set(message);
   }
 
+  uploadBImage(ima) {
+
+    return firebase.storage().ref("Templates").child("Birthday").put(ima).then(() => {
+      firebase.storage().ref("Templates").child("Birthday").getDownloadURL().then((dURL) => {
+        this.db.collection(`Templates`).doc("BirthdayImage").set({ ImageUrl: dURL }).then(() => {
+          this.presentToast("Image Uploaded");
+        })
+      })
+    })
+
+  }
+
+  getBirthdayImage(){
+    return this.db.collection(`Templates`).doc("BirthdayImage").snapshotChanges();
+  }
   //Support
   async presentToast(msg) {
     const toast = await this.toastCtrl.create({

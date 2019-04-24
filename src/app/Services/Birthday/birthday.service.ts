@@ -15,7 +15,7 @@ export class BirthdayService {
   cDob = moment().format("DDMM");
   birthDayArrPhone: Array<any> = [];
   birthDayArr: Array<any> = [];
-
+  bImag: string = "";
 
   constructor(
     private db: AngularFirestore,
@@ -46,21 +46,22 @@ export class BirthdayService {
             if (temp.DOB == this.cDob) {
               this.birthDayArr.push(temp);
               this.birthDayArrPhone.push(temp.Phone);
+              let tempTemplate: string = "Dear " + temp.Name + "%0A" + this.birthTemplate + "%0A" + "https://begums.tk/dbdi";
+
+              this.messageService.sendMessage(tempTemplate, this.birthDayArrPhone)
+
             }
           })
-          this.messageService.sendMessage(this.birthTemplate, this.birthDayArrPhone).then(() => {
-            console.log(this.birthDayArr)
-            this.birthDayArr.forEach(snap => {
-              let temp: any = snap;
-              this.db.collection("BDs").doc(moment().format("YYYYMMDD")).collection("Clients").doc(temp.Phone).set({ Name: temp.Name });
-            })
-          }).then(() => {
-            this.db.collection("BDs").doc(moment().format("YYYYMMDD")).set({ Delivered: true, TimeStamp: moment().format() });
-          });
         })
+
+        this.birthDayArr.forEach(snap => {
+          let temp: any = snap;
+          this.db.collection("BDs").doc(moment().format("YYYYMMDD")).collection("Clients").doc(temp.Phone).set({ Name: temp.Name });
+        })
+        this.db.collection("BDs").doc(moment().format("YYYYMMDD")).set({ Delivered: true, TimeStamp: moment().format() });
+
       }
     })
-
   }
 
   async sendFestivities() {
@@ -74,11 +75,16 @@ export class BirthdayService {
           let m: string = temp.Message + "%0A" + uurl;
 
           this.userService.getallUsers().subscribe(snap => {
-            this.messageService.sendMessage(m, snap).then(() => {
-              this.db.collection("Festivities").doc(temp.Name).set({ Status: "Completed" }, { merge: true }).then(() => {
-                this.userService.presentToast("Festivities sent");
-              });
-            })
+
+            console.log(snap)
+
+            // this.messageService.sendMessage(m, snap).then(() => {
+            //   this.db.collection("Festivities").doc(temp.Name).set({ Status: "Completed" }, { merge: true }).then(() => {
+            //     this.userService.presentToast("Festivities sent");
+            //   });
+            // })
+
+
           })
 
 

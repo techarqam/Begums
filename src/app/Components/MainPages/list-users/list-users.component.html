@@ -38,7 +38,7 @@
         <ion-card>
 
           <ion-row class="tableTop wt">
-            <ion-col size="12" size-md="3">
+            <ion-col size="12" size-md="2">
               <h2 ion-text text-md-center class="wt">NAME</h2>
             </ion-col>
             <ion-col size="12" size-md="2">
@@ -50,10 +50,10 @@
             <ion-col size="12" size-md="2">
               <h2 ion-text text-md-center class="wt">AVG RATING</h2>
             </ion-col>
-            <ion-col size="12" size-md="2">
+            <ion-col size="12" size-md="1">
               <h2 ion-text text-md-center class="wt">VIEW</h2>
             </ion-col>
-            <ion-col size="12" size-md="1">
+            <ion-col size="12" size-md="3">
               <h2 ion-text text-md-center class="wt">FEEDBACK</h2>
             </ion-col>
           </ion-row>
@@ -62,7 +62,7 @@
 
           <div class="strip noBacki ">
             <ion-row *ngFor="let u of users | async" class="ion-padding-horizontal">
-              <ion-col grr padding-top size="12" size-md="3">
+              <ion-col grr padding-top size="12" size-md="2">
                 <h2 ion-text color="grr">{{u.payload.doc.data().Name | uppercase}}</h2>
               </ion-col>
               <ion-col grr padding-top size="12" size-md="2">
@@ -74,13 +74,13 @@
               <ion-col grr padding-top size="12" size-md="2">
                 <h2 ion-text text-md-center color="grr">{{u.payload.doc.data().AverageRatings | number:'1.0-0' }}</h2>
               </ion-col>
-              <ion-col size="12" size-md="2" text-md-center>
+              <ion-col size="12" size-md="1" class="ion-text-center" >
 
                 <ion-button color="primary" fill="clear" (click)="userDetails(u.payload.doc.id)">
                   <ion-icon name="md-eye"></ion-icon>
                 </ion-button>
               </ion-col>
-              <ion-col size="12" size-md="1">
+              <ion-col size="12" size-md="3" class="ion-text-center" >
                 <ion-button color="primary" fill="clear" (click)="confirmFeedback(u)">
                   Request<br>
                   Feedback
