@@ -46,7 +46,7 @@ export class BirthdayService {
             if (temp.DOB == this.cDob) {
               this.birthDayArr.push(temp);
               this.birthDayArrPhone.push(temp.Phone);
-              let tempTemplate: string = "Dear " + temp.Name + "%0A" + this.birthTemplate + "%0A" + "https://begums.tk/dbdi";
+              let tempTemplate: string = "Dear " + temp.Name + "%0A" + this.birthTemplate + "%0A" + "http://begums.tk/dbdi";
 
               this.messageService.sendMessage(tempTemplate, this.birthDayArrPhone)
 
@@ -71,18 +71,16 @@ export class BirthdayService {
         temp.FestDate = moment(temp.Date).format("DDMM");
 
         if (temp.FestDate == this.cDob && temp.Status == "Not Completed") {
-          let uurl = "https://begums.tk/proms/" + temp.Name;
+          let uurl = "http://begums.tk/proms/" + temp.Name;
           let m: string = temp.Message + "%0A" + uurl;
 
           this.userService.getallUsers().subscribe(snap => {
 
-            console.log(snap)
-
-            // this.messageService.sendMessage(m, snap).then(() => {
-            //   this.db.collection("Festivities").doc(temp.Name).set({ Status: "Completed" }, { merge: true }).then(() => {
-            //     this.userService.presentToast("Festivities sent");
-            //   });
-            // })
+            this.messageService.sendMessage(m, snap).then(() => {
+              this.db.collection("Festivities").doc(temp.Name).set({ Status: "Completed" }, { merge: true }).then(() => {
+                this.userService.presentToast("Festivities sent");
+              });
+            })
 
 
           })
