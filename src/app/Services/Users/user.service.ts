@@ -70,7 +70,7 @@ export class UserService {
   }
 
   getUsers(num) {
-    return this.firestore.collection('Users', ref => ref.orderBy("Name").limit(num)).snapshotChanges();
+    return this.firestore.collection('Users', ref => ref.orderBy("Name")).snapshotChanges();
   }
   getallUsers() {
     return this.firestore.collection('Users').valueChanges();

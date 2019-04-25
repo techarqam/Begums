@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { UserService } from '../Users/user.service';
 import { MessagingService } from '../Messaging/messaging.service';
 import { FestivitiesService } from '../Festivities/festivities.service';
+import { RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -44,25 +45,40 @@ export class BirthdayService {
             let temp: any = snip;
             temp.DOB = moment(temp.DOB).format("DDMM");
             if (temp.DOB == this.cDob) {
+              console.log(temp)
               this.birthDayArr.push(temp);
               this.birthDayArrPhone.push(temp.Phone);
               let tempTemplate: string = "Dear " + temp.Name + "%0A" + this.birthTemplate + "%0A" + "http://begums.tk/dbdi";
 
               this.messageService.sendMessage(tempTemplate, this.birthDayArrPhone)
-
             }
           })
-        })
 
-        this.birthDayArr.forEach(snap => {
-          let temp: any = snap;
-          this.db.collection("BDs").doc(moment().format("YYYYMMDD")).collection("Clients").doc(temp.Phone).set({ Name: temp.Name });
+          this.logMessages();
+
+
         })
-        this.db.collection("BDs").doc(moment().format("YYYYMMDD")).set({ Delivered: true, TimeStamp: moment().format() });
 
       }
     })
   }
+
+  async logMessages() {
+
+
+    await this.db.collection("BDs").doc(moment().format("YYYYMMDD")).set({ Delivered: true, TimeStamp: moment().format() }).then(() => {
+
+      this.birthDayArr.forEach(snap => {
+        let temp: any = snap;
+
+        this.db.collection("BDs").doc(moment().format("YYYYMMDD")).collection("Clients").doc(temp.Phone).set({ Name: temp.Name }).then(() => {
+          console.log("Done For " + temp.Name)
+        });
+      });
+    });
+
+  }
+
 
   async sendFestivities() {
     this.festService.getFests().subscribe(snap => {

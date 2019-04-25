@@ -32,5 +32,6 @@ export class MessagingService {
         console.log(snip)
       })
     }
+    phones = [];
   }
 }

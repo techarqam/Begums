@@ -9,6 +9,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <app-loader *ngIf="showLoader"></app-loader>
+
   <ion-item *ngFor="let p of people | async ">
     <p slot="start">
       {{p.payload.doc.data().Name | uppercase}}

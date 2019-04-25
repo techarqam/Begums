@@ -23,7 +23,7 @@ import { DisplayBirthdayImageComponent } from './Components/Extra/display-birthd
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
 
   },

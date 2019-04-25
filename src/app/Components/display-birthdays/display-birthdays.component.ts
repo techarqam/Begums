@@ -19,7 +19,7 @@ export class DisplayBirthdaysComponent implements OnInit {
     private modalCtrl: ModalController,
     private db: AngularFirestore,
   ) {
-    this.db.collection('BDs', ref => ref.orderBy("TimeStamp", "asc")).snapshotChanges().subscribe(snap => {
+    this.db.collection('BDs', ref => ref.orderBy("TimeStamp", "desc")).snapshotChanges().subscribe(snap => {
       snap.forEach(snip => {
         let b: any = snip.payload.doc.data();
         b.id = snip.payload.doc.id;

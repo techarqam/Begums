@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class ViewBirthdayPeopleComponent implements OnInit {
 
   key = this.navParams.get("key");
+  showLoader: boolean = true;
 
   people: Observable<any>;
 
@@ -23,6 +24,7 @@ export class ViewBirthdayPeopleComponent implements OnInit {
   ngOnInit() {
     console.log(this.key);
     this.people = this.db.collection('BDs').doc(this.key.id).collection("Clients").snapshotChanges();
+    this.people.subscribe(() => { this.showLoader = false });
 
   }
   close() {
